@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sistema de Eventos - Inicio</title>
+</head>
+<body>
+	<h1>Sistema de Gestión de Eventos</h1>
+	
+	<div>
+		<h2>Eventos Disponibles</h2>
+		<div th:each="evento : ${eventos}">
+			<h3 th:text="${evento.nombre}">Nombre del Evento</h3>
+			<p th:text="${evento.descripcion}">Descripción</p>
+			<p>Fecha: <span th:text="${evento.fecha}">Fecha</span></p>
+			<p>Lugar: <span th:text="${evento.lugar}">Lugar</span></p>
+			<p>Precio: $<span th:text="${evento.precio}">Precio</span></p>
+			<p>Capacidad: <span th:text="${evento.capacidad}">Capacidad</span></p>
+			<p>Tipo: <span th:text="${evento.tipoEvento}">Tipo</span></p>
+			
+			<a th:href="@{/compras/nueva/{eventoId}(eventoId=${evento.id})}">
+				Comprar Tickets
+			</a>
+		</div>
+	</div>
+	
+	<div>
+		<h2>Navegación</h2>
+		<ul>
+			<li><a href="/eventos">Ver Todos los Eventos</a></li>
+			<li><a href="/clientes">Gestionar Clientes</a></li>
+			<li><a href="/compras">Ver Compras</a></li>
+		</ul>
+	</div>
+</body>
+</html>
