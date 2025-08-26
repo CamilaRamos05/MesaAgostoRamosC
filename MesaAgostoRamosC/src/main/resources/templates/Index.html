@@ -184,7 +184,30 @@
                 </div>
             </div>
 
-
+            <!-- Estadísticas o información adicional -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Resumen del Sistema</h3>
+                            <div class="row text-center">
+                                <div class="col-md-4">
+                                    <div class="fs-2 text-primary" th:text="${#lists.size(eventos)}">0</div>
+                                    <div class="text-muted">Eventos Activos</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="fs-2 text-success" th:text="${#lists.size(clientes)}">0</div>
+                                    <div class="text-muted">Clientes Registrados</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="fs-2 text-info" th:text="${#lists.size(compras)}">0</div>
+                                    <div class="text-muted">Compras Realizadas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

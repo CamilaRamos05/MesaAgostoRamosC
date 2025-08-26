@@ -45,10 +45,11 @@
                                        class="btn btn-outline-secondary" title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <a th:href="@{/clientes/eliminar/{id}(id=${cliente.id})}" 
-                                       class="btn btn-outline-danger" title="Eliminar">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
+                                    <form th:action="@{/clientes/eliminar/{id}(id=${cliente.id})}" method="post" style="display:inline;">
+                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('¿Está seguro que desea eliminar este cliente?');">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -69,5 +70,7 @@
         </div>
     </footer>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
 </body>
 </html>
