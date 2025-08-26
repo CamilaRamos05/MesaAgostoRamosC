@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Clientes con Compras - Gestión de Eventos'">Clientes con Compras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div th:replace="layout/nav :: nav"></div>
+    
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Clientes con Compras</h2>
+            <a th:href="@{/eventos}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver a Eventos
+            </a>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div th:each="cliente : ${clientes}" class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-person-circle"></i>
+                            <span th:text="${cliente.nombre + ' ' + cliente.apellido}">Nombre Completo</span>
+                        </h5>
+                        <ul class="list-unstyled mb-3">
+                            <li class="mb-2">
+                                <i class="bi bi-envelope"></i>
+                                <span th:text="${cliente.email}">Email</span>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-card-text"></i>
+                                <span th:text="${'DNI: ' + cliente.dni}">DNI</span>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-cart"></i>
+                                <span th:text="${cliente.compras.size() + ' compra(s)'}">Compras</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <div class="d-flex justify-content-end">
+                            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}" 
+                               class="btn btn-outline-secondary" title="Ver Detalles">
+                                <i class="bi bi-eye"></i> Ver Detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje cuando no hay clientes con compras -->
+        <div th:if="${#lists.isEmpty(clientes)}" class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> No hay clientes con compras registradas.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
