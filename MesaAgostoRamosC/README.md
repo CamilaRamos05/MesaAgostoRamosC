@@ -142,7 +142,7 @@ src/main/resources/
 
 ## 👨‍💻 Autor
 
-**Simón Mesa** - Estudiante de Programación Universitaria
+- Camila Ramos
 
 ## 📚 Recursos de Aprendizaje
 
