@@ -19,6 +19,7 @@
                         <thead>
                             <tr>
                                 <th>Evento</th>
+                                <th>Cliente</th>
                                 <th>Tickets Vendidos</th>
                                 <th>Precio por Ticket</th>
                                 <th>Recaudación Total</th>
@@ -27,6 +28,7 @@
                         <tbody>
                             <tr th:each="compra : ${compras}">
                                 <td th:text="${compra.evento.nombre}"></td>
+                                <td th:text="${compra.cliente.nombre + ' ' + compra.cliente.apellido}"></td>
                                 <td th:text="${compra.cantidadTickets}"></td>
                                 <td th:text="${'$' + #numbers.formatDecimal(compra.evento.precio, 0, 'COMMA', 2, 'POINT')}"></td>
                                 <td th:text="${'$' + #numbers.formatDecimal(compra.cantidadTickets * compra.evento.precio, 0, 'COMMA', 2, 'POINT')}"></td>
@@ -34,7 +36,7 @@
                         </tbody>
                         <tfoot>
                             <tr class="table-info">
-                                <td colspan="3" class="text-end fw-bold">Recaudación Total:</td>
+                                <td colspan="4" class="text-end fw-bold">Recaudación Total:</td>
                                 <td th:text="${'$' + #numbers.formatDecimal(#aggregates.sum(compras.![cantidadTickets * evento.precio]), 0, 'COMMA', 2, 'POINT')}" class="fw-bold"></td>
                             </tr>
                         </tfoot>
